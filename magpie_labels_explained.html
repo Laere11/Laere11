@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Magpie Property Labels Explained</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 40px;
+      background-color: #f7f7f7;
+      color: #333;
+      line-height: 1.6;
+    }
+    h1 {
+      text-align: center;
+      font-size: 32px;
+      font-weight: bold;
+      margin-bottom: 0.5em;
+    }
+    h2 {
+      margin-top: 1.5em;
+      font-size: 22px;
+      font-weight: bold;
+    }
+    .table-container {
+      margin-top: 20px;
+      overflow-x: auto;
+      background: #fff;
+      padding: 20px;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+    }
+    table {
+      border-collapse: collapse;
+      width: 100%;
+      margin-bottom: 1em;
+    }
+    th, td {
+      border: 1px solid #ccc;
+      padding: 12px;
+      vertical-align: top;
+      text-align: left;
+    }
+    th {
+      background-color: #f0f0f0;
+      font-weight: bold;
+      width: 30%;
+    }
+    .section {
+      margin-bottom: 1.5em;
+    }
+    .section p {
+      margin: 0.4em 0;
+    }
+    .code-block {
+      background: #f5f5f5;
+      border-left: 4px solid #ccc;
+      padding: 1em;
+      font-family: Consolas, "Courier New", Courier, monospace;
+      overflow-x: auto;
+    }
+  </style>
+</head>
+<body>
+
+<h1>Magpie Property Labels Explained</h1>
+
+<div class="section">
+  <p>This page provides a reference table describing the most common Magpie property labels (such as “Number,” “MendeleevNumber,” “AtomicWeight,” etc.) and the statistical prefixes (e.g., “minimum,” “maximum,” “range,” “mean,” “avg_dev,” “mode”) that you might encounter in the Matminer Magpie feature set.</p>
+  <p>Each row in the table explains both the underlying property and the meaning of the statistical label for non-experts. The goal is to help you understand the significance of each descriptor as it applies to your material's composition (e.g., NaCl).</p>
+</div>
+
+<div class="table-container">
+  <table>
+    <tr>
+      <th>Label</th>
+      <th>Definition / Significance</th>
+    </tr>
+    <tr>
+      <td><strong>Number</strong></td>
+      <td>
+        <p><strong>Base Property:</strong> The atomic number of each element (i.e., number of protons in the nucleus).</p>
+        <p><strong>Statistical Labels:</strong></p>
+        <ul>
+          <li><em>minimum Number</em>: The smallest atomic number among the elements in the composition.</li>
+          <li><em>maximum Number</em>: The largest atomic number among the elements.</li>
+          <li><em>range Number</em>: The difference between the largest and smallest atomic number.</li>
+          <li><em>mean Number</em>: The average atomic number of all elements.</li>
+          <li><em>avg_dev Number</em>: The average absolute deviation from the mean atomic number.</li>
+          <li><em>mode Number</em>: The most frequently occurring atomic number in the composition.</li>
+        </ul>
+      </td>
+    </tr>
+    <tr>
+      <td><strong>MendeleevNumber</strong></td>
+      <td>
+        <p><strong>Base Property:</strong> An index used by Dmitri Mendeleev in his periodic table ordering. It’s a historical or alternative numbering system that can reflect chemical trends more smoothly than pure atomic number.</p>
+        <p><strong>Statistical Labels:</strong></p>
+        <ul>
+          <li><em>minimum MendeleevNumber</em> … <em>mode MendeleevNumber</em> have analogous meanings, giving you min, max, range, mean, average deviation, and the most common Mendeleev number among the elements in the composition.</li>
+        </ul>
+      </td>
+    </tr>
+    <tr>
+      <td><strong>AtomicWeight</strong></td>
+      <td>
+        <p><strong>Base Property:</strong> The standard (average) atomic weight of each element (in atomic mass units).</p>
+        <p><strong>Statistical Labels:</strong></p>
+        <ul>
+          <li><em>minimum AtomicWeight</em>, <em>maximum AtomicWeight</em>, etc. follow the same pattern, capturing the min, max, range, mean, avg deviation, and mode of atomic weights for the composition’s elements.</li>
+        </ul>
+      </td>
+    </tr>
+    <tr>
+      <td><strong>MeltingT</strong></td>
+      <td>
+        <p><strong>Base Property:</strong> The melting temperature (in K) of each element (if known).</p>
+        <p><strong>Statistical Labels:</strong></p>
+        <ul>
+          <li><em>minimum MeltingT</em>, <em>maximum MeltingT</em>, <em>range MeltingT</em>, <em>mean MeltingT</em>, <em>avg_dev MeltingT</em>, <em>mode MeltingT</em> — these describe how the melting points of the constituent elements vary in the mixture.</li>
+        </ul>
+      </td>
+    </tr>
+    <tr>
+      <td><strong>CovalentRadius</strong></td>
+      <td>
+        <p><strong>Base Property:</strong> The approximate radius of an atom when covalently bonded, measured in angstroms (Å).</p>
+        <p><strong>Statistical Labels:</strong></p>
+        <ul>
+          <li><em>minimum CovalentRadius</em>, <em>maximum CovalentRadius</em>, <em>range CovalentRadius</em>, <em>mean CovalentRadius</em>, <em>avg_dev CovalentRadius</em>, <em>mode CovalentRadius</em> describe the distribution of covalent radii among the elements in the composition.</li>
+        </ul>
+      </td>
+    </tr>
+    <tr>
+      <td><strong>Electronegativity</strong></td>
+      <td>
+        <p><strong>Base Property:</strong> A measure of how strongly each element’s atom attracts electrons in a chemical bond (often using the Pauling or Allen scale).</p>
+        <p><strong>Statistical Labels:</strong></p>
+        <ul>
+          <li><em>minimum Electronegativity</em>, <em>maximum Electronegativity</em>, <em>range Electronegativity</em>, <em>mean Electronegativity</em>, <em>avg_dev Electronegativity</em>, <em>mode Electronegativity</em> provide the spread and central tendencies of electronegativities in the composition.</li>
+        </ul>
+      </td>
+    </tr>
+    <tr>
+      <td><strong>NsValence / NpValence / NdValence</strong></td>
+      <td>
+        <p><strong>Base Property:</strong> The count of valence electrons in the s, p, or d orbitals for each element. These are sometimes referred to as <code>NsValence</code>, <code>NpValence</code>, and <code>NdValence</code> in Magpie’s data.</p>
+        <p><strong>Statistical Labels:</strong></p>
+        <ul>
+          <li><em>minimum NsValence</em> … <em>mode NsValence</em>, etc. for the p and d orbitals as well. They summarize how the valence electron counts in s/p/d orbitals vary among the elements in the composition.</li>
+        </ul>
+      </td>
+    </tr>
+    <tr>
+      <td><strong>row</strong></td>
+      <td>
+        <p><strong>Base Property:</strong> The row (period) of the periodic table in which each element resides. Rows are counted top to bottom (e.g., H is row 1, Li is row 2, etc.).</p>
+        <p><strong>Statistical Labels:</strong></p>
+        <ul>
+          <li><em>minimum row</em>, <em>maximum row</em>, <em>range row</em>, <em>mean row</em>, <em>avg_dev row</em>, <em>mode row</em> describe how the elements in your composition span different rows of the periodic table.</li>
+        </ul>
+      </td>
+    </tr>
+    <tr>
+      <td><strong>column</strong></td>
+      <td>
+        <p><strong>Base Property:</strong> The column (group) of the periodic table in which each element resides. Columns are typically counted left to right (e.g., group 1 for alkali metals, group 17 for halogens, etc.).</p>
+        <p><strong>Statistical Labels:</strong></p>
+        <ul>
+          <li><em>minimum column</em>, <em>maximum column</em>, <em>range column</em>, <em>mean column</em>, <em>avg_dev column</em>, <em>mode column</em> give the spread of columns for the composition’s elements.</li>
+        </ul>
+      </td>
+    </tr>
+  </table>
+</div>
+
+<div class="section">
+  <h2>Interpreting the Statistics</h2>
+  <p><strong>minimum / maximum</strong>: The smallest or largest value of a given property among all elements in your composition.</p>
+  <p><strong>range</strong>: The difference between the maximum and minimum values. It tells you how widely the property varies across the elements.</p>
+  <p><strong>mean</strong>: The arithmetic average of the property’s values among the elements in the composition.</p>
+  <p><strong>avg_dev</strong>: The average absolute deviation from the mean, reflecting how spread out the values are around that mean.</p>
+  <p><strong>mode</strong>: The most frequently occurring value among the elements in the composition (often most relevant if multiple elements share the same discrete property).</p>
+</div>
+
+<div class="section">
+  <h2>Why These Properties Matter</h2>
+  <ul>
+    <li><strong>Atomic Number &amp; MendeleevNumber:</strong> Indicate where the element sits in the periodic table, often correlating with chemical reactivity and bonding characteristics.</li>
+    <li><strong>AtomicWeight &amp; MeltingT:</strong> Provide insight into the mass and thermal behavior of each element. A composition with high average melting point, for instance, might produce a material with high thermal stability.</li>
+    <li><strong>CovalentRadius &amp; Electronegativity:</strong> Strongly influence bonding and structure formation in the crystal. Larger radii or big differences in electronegativity often lead to specific types of bonding arrangements.</li>
+    <li><strong>NsValence / NpValence / NdValence:</strong> Show how many electrons are available in each orbital, guiding predictions about oxidation states and bonding preferences.</li>
+    <li><strong>row &amp; column:</strong> Summarize how your composition spans the periodic table’s rows (periods) and columns (groups), which often determines how “mixed” or “similar” the constituent elements are from a chemical standpoint.</li>
+  </ul>
+</div>
+
+<div class="section">
+  <p>By examining these properties and their statistical descriptors, you can gauge how your multi‑element composition (like NaCl) spans key chemical and physical attributes, which in turn can hint at the resulting material’s stability, bonding type, and potential applications.</p>
+</div>
+
+</body>
+</html>
