@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Alternative Output Types</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+      line-height: 1.6;
+    }
+    h1, h2 {
+      color: #333;
+    }
+    ul {
+      margin: 10px 0;
+    }
+    li {
+      margin-bottom: 10px;
+    }
+    code {
+      background-color: #f4f4f4;
+      padding: 2px 4px;
+      border-radius: 4px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Alternative Output Types</h1>
+  <p>
+    Aside from the standard <code>.cif</code> files (which contain the crystal structure information), MatterGen produces several other useful outputs that help you understand and evaluate the generated materials. These include:
+  </p>
+
+  <h2>Extended XYZ Files (<code>.extxyz</code>)</h2>
+  <p>
+    A single file that stores multiple generated structures as sequential frames. This format is useful for visualizing or post‑processing the full set of atomic coordinates and compositions.
+  </p>
+
+  <h2>Denoising Trajectories (<code>generated_trajectories.zip</code>)</h2>
+  <p>
+    A ZIP archive containing the denoising process for each generated structure. These files contain intermediate snapshots (often in <code>.extxyz</code> format) that show the progressive refinement of a noisy input into a stable structure. Such trajectories are valuable for analyzing the convergence behavior of the diffusion process.
+  </p>
+
+  <h2>Evaluation Metrics File (<code>metrics.json</code>)</h2>
+  <p>
+    When running the evaluation script (e.g., using MatterSim), the output is stored in a JSON file. This file typically contains:
+  </p>
+  <ul>
+    <li><strong>Stability Metrics:</strong> Percentage of generated structures that fall within a threshold energy above the convex hull.</li>
+    <li><strong>Novelty Metrics:</strong> Fraction or count of generated structures that do not match any structure in a reference dataset (using a disordered structure matcher).</li>
+    <li><strong>Uniqueness Metrics:</strong> Number or percentage of structures that are unique among the generated samples.</li>
+    <li><strong>Geometric Accuracy:</strong> Average root-mean-square distance (RMSD) between the generated structures and their DFT-relaxed counterparts.</li>
+    <li><strong>Property Predictions:</strong> Optionally, values of properties such as band gap, magnetic density, or bulk modulus predicted using surrogate ML models.</li>
+    <li><strong>Other Statistical Summaries:</strong> Distributions (mean, median, standard deviation) of key properties across the generated dataset.</li>
+  </ul>
+
+  <h2>Visualization and Plot Files (External)</h2>
+  <p>
+    Although MatterGen itself outputs raw data formats (like <code>.cif</code> and <code>.extxyz</code>), you can leverage external tools and libraries for further analysis:
+  </p>
+  <ul>
+    <li><strong>2D Graphs, Charts, and Plots:</strong> Use libraries like Matplotlib, Seaborn, or Plotly to generate plots (e.g., histograms of property distributions, scatter plots comparing generated vs. reference properties, convergence curves of the diffusion process).</li>
+    <li><strong>Statistical Analysis Scripts:</strong> Custom Python scripts can analyze the metrics file, perform hypothesis testing, or generate interactive dashboards using libraries like Dash or Bokeh.</li>
+    <li><strong>Visualization with VESTA:</strong> While VESTA is an external standalone application for crystal structure visualization, you can write custom scripts that automatically launch VESTA to view <code>.cif</code> files.</li>
+  </ul>
+</body>
+</html>
